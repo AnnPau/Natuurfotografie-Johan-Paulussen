@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Wilder &amp; Stil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-nav is-scrolled">
+  <a href="/" class="logo">
+    <img class="logo-voor-zwart" src="/images/logo-voor-zwart.png" alt="CJP Natuurfotografie">
+    <img class="logo-voor-wit" src="/images/logo-voor-wit.png" alt="CJP Natuurfotografie">
+  </a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  <nav>
+    <ul class="nav-links">
+      <li><a class="top-link" href="/">Home</a></li>
+      <li class="has-menu">
+        <a class="top-link" href="/portfolio/">Portfolio</a>
+        <div class="mega-menu" data-mega-menu></div>
+      </li>
+      <li><a class="top-link" href="/over-ons/">Over ons</a></li>
+      <li><a class="top-link" href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-header licht">
+  <span class="eyebrow">Contact</span>
+  <h1>Nog vragen?</h1>
+  <p class="lead">Stuur een mailtje met uw vraag of boodschap. Interesse in een afdruk van een foto? Vermeld dit gerust in het formulier — we bespreken de mogelijkheden, formaten en prijzen graag persoonlijk via e-mail.</p>
+</section>
+
+<section class="sectie" style="padding-top:0;">
+  <div class="contact-grid">
+    <div class="contact-blok">
+      <h3>E-mail</h3>
+      <p><a href="mailto:info@wilderenstil.be">info@wilderenstil.be</a></p>
+    </div>
+    <div class="contact-blok">
+      <h3>Telefoon</h3>
+      <p><a href="tel:+32470000000">+32 470 00 00 00</a></p>
+    </div>
+    <div class="contact-blok">
+      <h3>Sociale media</h3>
+      <p><a href="#">Instagram</a> · <a href="#">Facebook</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CONTACTFORMULIER -->
+<section class="sectie" style="padding-top:0;">
+  <div class="sectie-smal" style="max-width:900px;">
+    <h2>Stuur ons een bericht</h2>
+    <p style="color:var(--c-tekst-zacht);">Of het nu gaat om een algemene vraag, een opdracht op maat of de bestelling van een afdruk: vul het formulier in en we nemen persoonlijk contact met u op.</p>
+
+    <!-- Dit formulier gebruikt een mailto-koppeling zodat het meteen werkt
+         op GitHub Pages, zonder server nodig. Wilt u de berichten liever
+         rechtstreeks in een online formulier ontvangen (bv. via Formspree
+         of Netlify Forms), vervang dan de action + method hieronder door
+         de instructies van die dienst. -->
+    <form id="contactformulier" class="form-grid">
+      <div class="veld">
+        <label for="naam">Naam</label>
+        <input type="text" id="naam" name="naam" placeholder="Uw naam" required>
+      </div>
+      <div class="veld">
+        <label for="email">E-mailadres</label>
+        <input type="email" id="email" name="email" placeholder="uw@email.com" required>
+      </div>
+      <div class="veld volledig">
+        <label for="telefoon">Telefoonnummer (optioneel)</label>
+        <input type="tel" id="telefoon" name="telefoon" placeholder="bv. +32 0 00 00 00 00">
+      </div>
+      <div class="veld volledig">
+        <label for="bericht">Bericht</label>
+        <textarea id="bericht" name="bericht" placeholder="Bv. uw vraag, of de foto die u graag als afdruk zou bestellen en het gewenste formaat." required></textarea>
+      </div>
+      <div class="volledig form-actions">
+        <button type="submit" class="btn btn-goud">Bericht versturen</button>
+        <span class="form-note">We reageren zo snel mogelijk per e-mail.</span>
+      </div>
+    </form>
+    <p class="form-succes" id="formSucces">Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="/" class="logo"><img src="/images/logo-voor-zwart.png" alt="CJP Natuurfotografie"></a>
+    <div class="footer-links">
+      <div>
+        <h4>Verkennen</h4>
+        <ul>
+          <li><a href="/portfolio/">Portfolio</a></li>
+          <li><a href="/over-ons/">Over ons</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="/contact/">Contactpagina</a></li>
+          <li><a href="mailto:info@wilderenstil.be">info@wilderenstil.be</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Wilder &amp; Stil — Natuurfotografie</span>
+    <span>Alle foto's zijn eigendom van CJP Natuurfotografie en mogen niet zonder toestemming gebruikt worden.</span>
+  </div>
+</footer>
+
+<script src="/js/data.js"></script>
+<script src="/js/main.js"></script>
+<script>
+  // Formulier: bouwt een mailto-link op met alle gegevens, zodat het
+  // bericht meteen werkt zonder server (ideaal voor GitHub Pages).
+  document.getElementById("contactformulier").addEventListener("submit", function(e){
+    e.preventDefault();
+    const data = new FormData(this);
+    const onderwerp = encodeURIComponent(`Bericht via de website — ${data.get("naam")}`);
+    const body = encodeURIComponent(
+`Naam: ${data.get("naam")}
+E-mail: ${data.get("email")}
+Telefoon: ${data.get("telefoon")}
+
+Bericht:
+${data.get("bericht")}`
+    );
+    window.location.href = `mailto:info@wilderenstil.be?subject=${onderwerp}&body=${body}`;
+    document.getElementById("formSucces").classList.add("zichtbaar");
+  });
+</script>
+</body>
+</html>
