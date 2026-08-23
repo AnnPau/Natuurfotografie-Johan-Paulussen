@@ -1,3 +1,3 @@
-Johan Paulussen Natuurfotografie
+ Natuurfotografie Johan Paulussen
 
 Made by ELIAS ROES
