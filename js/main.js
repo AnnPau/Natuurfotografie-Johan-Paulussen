@@ -35,8 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
      categorie. Foto's verschijnen pas op de portfolio-pagina zelf. */
   const megaMenu = document.querySelector("[data-mega-menu]");
   if (megaMenu && typeof CATEGORIEEN !== "undefined"){
+    // Op de homepage (met hero) staat deze pagina op het hoogste niveau,
+    // op alle andere pagina's een niveau dieper (bv. /portfolio/) —
+    // vandaar het pad hieronder aangepast aan waar we ons bevinden.
+    const megaMenuBasis = hero ? "categorie/" : "../categorie/";
     megaMenu.innerHTML = CATEGORIEEN.map(cat => `
-      <a href="../categorie/?cat=${cat.slug}">${cat.naam}</a>
+      <a href="${megaMenuBasis}?cat=${cat.slug}">${cat.naam}</a>
     `).join("");
   }
 
@@ -45,8 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelector(".nav-links");
   if (navToggle && navLinks){
     navToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", navLinks.classList.contains("open"));
+      const isOpen = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", isOpen);
+      navToggle.setAttribute("aria-label", isOpen ? "Sluit menu" : "Menu");
+      navToggle.textContent = isOpen ? "✕" : "☰";
+      document.body.classList.toggle("nav-open", isOpen);
     });
   }
 
