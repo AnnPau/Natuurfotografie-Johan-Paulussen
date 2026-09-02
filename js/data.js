@@ -77,7 +77,7 @@ const FOTOS = [
 
   // ===== VOORBEELD — kopieer dit blok om een nieuwe foto toe te voegen =====
   {
-    id: "aap01",
+    id: "bat-eared fox",
     rank: 1,
     titel: "Aap01",
     categorie: "zoogdieren",
