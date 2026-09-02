@@ -219,6 +219,87 @@ h1,h2,h3,h4{
 .mega-menu a:hover::after{ opacity:1; transform: translateX(0); }
 .mega-menu a + a{ border-top: 1px solid var(--c-lijn-licht); }
 
+/* -------------------------------------------------------------- navigatie (mobiel)
+   .nav-toggle is hierboven altijd display:none — deze media query maakt
+   'm zichtbaar onder de 860px-grens (dezelfde grens als de rest van de
+   site) en verandert .nav-links in een uitschuifpaneel dat opent via de
+   'open'-class die main.js toevoegt bij een klik op de hamburgerknop. */
+@media (max-width: 860px){
+  .nav-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.5rem;
+    line-height: 1;
+    position: relative;
+    z-index: 101; /* boven het paneel, zodat de knop bruikbaar blijft om te sluiten */
+  }
+  .nav-links{
+    position: fixed;
+    top: 0; right: 0;
+    height: 100vh;
+    width: min(320px, 86vw);
+    margin: 0;
+    padding: 120px 32px 40px;
+    background: var(--c-ivoor);
+    color: var(--c-inkt);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform .45s var(--ease);
+    box-shadow: -24px 0 60px rgba(10,10,8,.25);
+  }
+  .nav-links.open{ transform: translateX(0); }
+  .nav-links > li{ width: 100%; }
+  .nav-links > li + li{ border-top: 1px solid var(--c-lijn-licht); }
+  .nav-links a.top-link{
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    font-size: .95rem;
+  }
+  .nav-links a.top-link::after{ display:none; }
+
+  /* het uitklap-menu onder "Portfolio" werkt op mobiel niet via :hover —
+     daarom hier gewoon altijd zichtbaar en inline getoond, i.p.v. als
+     zwevend paneel */
+  .nav-links li.has-menu .mega-menu{
+    position: static;
+    transform: none;
+    margin-top: 0;
+    min-width: 0;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    border-top: none;
+    padding: 0 0 14px 12px;
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-links li.has-menu .mega-menu a{ padding: 10px 0; font-size:.8rem; color: var(--c-tekst-zacht); }
+  .nav-links li.has-menu .mega-menu a + a{ border-top: none; }
+  .nav-links li.has-menu .mega-menu a::after{ display:none; }
+
+  /* afdonkering achter het uitgeschoven menu, aangestuurd door de
+     'nav-open'-class die main.js op body zet */
+  body.nav-open::after{
+    content:"";
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,8,.45);
+    z-index: 99;
+  }
+}
+
 /* ============================================================== HERO / SLIDESHOW */
 .hero{
   position: relative;
@@ -227,6 +308,9 @@ h1,h2,h3,h4{
   width:100%;
   overflow: hidden;
   background: var(--c-noir);
+}
+@supports (height: 100dvh){
+  .hero{ height: 100dvh; }
 }
 .hero-slide{
   position:absolute; inset:0;
@@ -344,8 +428,6 @@ h1,h2,h3,h4{
   .bar{ grid-template-columns: 1fr; min-height: auto; }
   .bar-media{ height: 46vh; clip-path: inset(0 0 100% 0) !important; }
   .bar.in-view .bar-media{ clip-path: inset(0 0 0 0) !important; }
-  .mega-menu{ grid-template-columns: repeat(2, 1fr); left:0; transform: translate(0,8px); }
-  .nav-links li.has-menu:hover .mega-menu{ transform: translate(0,0); }
 }
 
 /* ============================================================== PAGINA-HEADER (niet-home) */
