@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const megaMenu = document.querySelector("[data-mega-menu]");
   if (megaMenu && typeof CATEGORIEEN !== "undefined"){
     megaMenu.innerHTML = CATEGORIEEN.map(cat => `
-      <a href="/categorie/?cat=${cat.slug}">${cat.naam}</a>
+      <a href=".;/categorie/?cat=${cat.slug}">${cat.naam}</a>
     `).join("");
   }
 
