@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderGrid(){
       fotoGrid.innerHTML = fotos.map(f => `
-        <a class="photo-card" data-foto-id="${f.id}" href="../foto/?id=${f.id}">
+        <a class="photo-card" data-foto-id="${f.id}" href="../images/?id=${f.id}">
           <img src="${f.afbeelding}" alt="${f.titel}" loading="lazy">
           <div class="titel-strip">${f.titel}</div>
         </a>
