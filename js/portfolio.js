@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderGrid(){
       fotoGrid.innerHTML = fotos.map(f => `
-        <a class="photo-card" data-foto-id="${f.id}" href="../images/?id=${f.id}">
+        <a class="photo-card" data-foto-id="${f.id}" href="../foto/?id=${f.id}">
           <img src="${f.afbeelding}" alt="${f.titel}" loading="lazy">
           <div class="titel-strip">${f.titel}</div>
         </a>
@@ -61,7 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const detailWrap = document.querySelector("[data-foto-detail]");
   if (detailWrap){
     const foto = vindFoto(getParam("id")) || FOTOS[0];
-    const categorie = vindCategorie(foto.categorie);
+    const categorieSlug = categorieVanFoto(foto);
+    const categorie = vindCategorie(categorieSlug);
 
     document.title = `${foto.titel} — Portfolio`;
 
@@ -70,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${foto.afbeelding}" alt="${foto.titel}" loading="lazy">
       </div>
       <div class="foto-info">
-        <a class="terug" href="../categorie/?cat=${foto.categorie}">&larr; Terug naar ${categorie ? categorie.naam : "portfolio"}</a>
+        <a class="terug" href="../categorie/?cat=${categorieSlug}">&larr; Terug naar ${categorie ? categorie.naam : "portfolio"}</a>
         <span class="eyebrow">${categorie ? categorie.naam : ""}</span>
         <h1>${foto.titel}</h1>
         <p class="beschrijving">${foto.beschrijving}</p>
