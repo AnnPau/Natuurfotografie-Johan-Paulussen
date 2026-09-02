@@ -81,7 +81,7 @@ const FOTOS = [
     rank: 1,
     titel: "Bat eared fox",
     categorie: "afrika",
-    afbeelding: "/images/portfolio/afrika/bat_eared_fox.jpg",
+    afbeelding: "/images/portfolio/afrika/bat_eared_fox.webp",
     beschrijving: "Typ hier je tekst...",
   },
 
