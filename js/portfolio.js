@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const catGrid = document.querySelector("[data-cat-grid]");
   if (catGrid){
     catGrid.innerHTML = CATEGORIEEN.map(cat => `
-      <a class="cat-card" href="/categorie/?cat=${cat.slug}">
+      <a class="cat-card" href="../categorie/?cat=${cat.slug}">
         <img src="${cat.cover}" alt="${cat.naam}" loading="lazy">
         <div class="label">
           <span class="eyebrow">${fotosVanCategorie(cat.slug).length} foto's</span>
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderGrid(){
       fotoGrid.innerHTML = fotos.map(f => `
-        <a class="photo-card" data-foto-id="${f.id}" href="/foto/?id=${f.id}">
+        <a class="photo-card" data-foto-id="${f.id}" href="../foto/?id=${f.id}">
           <img src="${f.afbeelding}" alt="${f.titel}" loading="lazy">
           <div class="titel-strip">${f.titel}</div>
         </a>
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${foto.afbeelding}" alt="${foto.titel}" loading="lazy">
       </div>
       <div class="foto-info">
-        <a class="terug" href="/categorie/?cat=${foto.categorie}">&larr; Terug naar ${categorie ? categorie.naam : "portfolio"}</a>
+        <a class="terug" href="../categorie/?cat=${foto.categorie}">&larr; Terug naar ${categorie ? categorie.naam : "portfolio"}</a>
         <span class="eyebrow">${categorie ? categorie.naam : ""}</span>
         <h1>${foto.titel}</h1>
         <p class="beschrijving">${foto.beschrijving}</p>
