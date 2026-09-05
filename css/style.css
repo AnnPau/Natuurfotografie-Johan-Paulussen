@@ -288,6 +288,17 @@ h1,h2,h3,h4{
   .nav-links li.has-menu .mega-menu a{ padding: 10px 0; font-size:.8rem; color: var(--c-tekst-zacht); }
   .nav-links li.has-menu .mega-menu a + a{ border-top: none; }
   .nav-links li.has-menu .mega-menu a::after{ display:none; }
+  .nav-links li.has-menu .mega-menu a:hover{ background: var(--c-ivoor-dim); padding-left: 0; }
+
+  /* Zonder deze regel wint de :focus-within/:hover-regel hierboven (die
+     voor de zwevende desktopversie transform: translate(-50%,0) zet)
+     alsnog van onze eigen 'transform:none' zodra je een categorielink
+     aantikt (tikken = focus) — met exact dezelfde selector-opbouw hier
+     overschrijven we 'm alsnog (gelijke specificiteit, latere regel wint). */
+  .nav-links li.has-menu:hover .mega-menu,
+  .nav-links li.has-menu:focus-within .mega-menu{
+    transform: none;
+  }
 
   /* afdonkering achter het uitgeschoven menu, aangestuurd door de
      'nav-open'-class die main.js op body zet */
@@ -525,6 +536,12 @@ h1,h2,h3,h4{
   display:grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 0;
+  /* boven: hoogte van de vaste navigatiebalk (~90px, deze pagina's staan
+     altijd in de 'is-scrolled'-vormgeving) + dezelfde witruimte als
+     links en onder, zodat die drie afstanden rond de foto gelijk
+     blijven — ook wanneer --pad meebeweegt met de schermbreedte. Rechts
+     blijft 0: .foto-info heeft zelf al ruime binnenpadding. */
+  padding: calc(90px + var(--pad)) 0 var(--pad) var(--pad);
 }
 .foto-detail .foto-groot{ background: var(--c-noir); border-radius: 16px; overflow:hidden; }
 .foto-detail .foto-groot img{ width:100%; height:100%; object-fit:cover; max-height: 86vh; }
@@ -535,7 +552,10 @@ h1,h2,h3,h4{
 .foto-info .terug{ font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--c-goud-dim); margin-bottom: 1.6rem; display:inline-block; }
 .foto-info h1{ font-size: clamp(1.8rem, 3vw, 2.6rem); }
 .foto-info .beschrijving{ color: var(--c-tekst-zacht); margin-bottom: 1.8rem; }
-@media (max-width: 860px){ .foto-detail{ grid-template-columns:1fr; } .foto-detail .foto-groot img{ max-height: 60vh; } }
+@media (max-width: 860px){
+  .foto-detail{ grid-template-columns:1fr; padding-right: var(--pad); }
+  .foto-detail .foto-groot img{ max-height: 60vh; }
+}
 
 /* ============================================================== ALGEMENE SECTIES */
 .sectie{ padding: 96px var(--pad); }
@@ -599,6 +619,8 @@ h1,h2,h3,h4{
 @media (max-width: 860px){ .duo-kolom{ grid-template-columns:1fr; } }
 
 .contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.contact-info{ display:flex; flex-direction:column; gap: 28px; }
+.contact-info > p{ color: var(--c-tekst-zacht); font-size: 1.05rem; margin:0; }
 .contact-blok h3{ font-size: 1rem; text-transform:uppercase; letter-spacing:.08em; font-family: var(--font-body); font-weight:700; margin-bottom:.6rem; }
 .contact-blok p, .contact-blok a{ color: var(--c-tekst-zacht); }
 @media (max-width: 860px){ .contact-grid{ grid-template-columns: 1fr; gap: 30px; } }
