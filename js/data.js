@@ -77,6 +77,14 @@ const CATEGORIEEN = [
    afbeelding   : pad naar de volledige foto — moet in de submap staan
                   van images/portfolio/ die overeenkomt met de
                   categorie (fotodetail + portfolio-grid)
+   breedte,
+   hoogte       : (optioneel, in pixels) de afmetingen van de foto, bv.
+                  1600 x 1067. Hiermee reserveert de categoriepagina op
+                  voorhand precies de juiste ruimte (het grijze vlak)
+                  voor de foto, zodat de pagina niet verspringt terwijl
+                  de foto's inladen. Laat je dit weg, dan blijft alles
+                  gewoon werken, maar kan de pagina een klein beetje
+                  verschuiven zodra die foto ingeladen is.
    beschrijving : kort tekstblokje op de fotodetailpagina
    -------------------------------------------------------------------- */
 const FOTOS = [
@@ -86,6 +94,8 @@ const FOTOS = [
     id: "bat_eared_fox",
     titel: "Bat eared fox",
     afbeelding: "../images/portfolio/afrika/bat_eared_fox.webp",
+    breedte: 1600,
+    hoogte: 1067,
     beschrijving: "Typ hier je tekst...",
   },
   // ===== nieuwe foto's hieronder toevoegen (komma tussen elk object!) =====
