@@ -43,13 +43,27 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("[data-cat-titel]").forEach(el => el.textContent = categorie.naam);
     document.title = `${categorie.naam} — Portfolio`;
 
+    // Aantal foto's dat meteen ingeladen wordt (ongeveer de eerste rij(en)
+    // bovenaan de pagina) — de rest laadt pas wanneer je ernaartoe scrolt.
+    const AANTAL_DIRECT_INLADEN = 4;
+
     function renderGrid(){
-      fotoGrid.innerHTML = fotos.map(f => `
-        <a class="photo-card" data-foto-id="${f.id}" href="../foto/?id=${f.id}">
-          <img src="${f.afbeelding}" alt="${f.titel}" loading="lazy">
-          <div class="titel-strip">${f.titel}</div>
-        </a>
-      `).join("");
+      fotoGrid.innerHTML = fotos.map((f, i) => {
+        // Met breedte/hoogte uit data.js reserveert de browser meteen de
+        // juiste hoogte voor de foto (zichtbaar als het grijze vlak),
+        // nog vóór de foto zelf geladen is — zo verspringt de pagina niet.
+        const afmetingen = (f.breedte && f.hoogte)
+          ? ` width="${f.breedte}" height="${f.hoogte}"`
+          : "";
+        const eager = i < AANTAL_DIRECT_INLADEN;
+        const voorrang = i === 0 ? ' fetchpriority="high"' : "";
+        return `
+          <a class="photo-card" data-foto-id="${f.id}" href="../foto/?id=${f.id}">
+            <img src="${f.afbeelding}" alt="${f.titel}"${afmetingen} loading="${eager ? "eager" : "lazy"}"${voorrang}>
+            <div class="titel-strip">${f.titel}</div>
+          </a>
+        `;
+      }).join("");
     }
 
     renderGrid();
