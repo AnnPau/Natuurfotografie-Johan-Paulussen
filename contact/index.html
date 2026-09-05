@@ -32,60 +32,65 @@
 <section class="page-header licht">
   <span class="eyebrow">Contact</span>
   <h1>Nog vragen?</h1>
-  <p class="lead">Stuur een mailtje met uw vraag of boodschap. Interesse in een afdruk van een foto? Vermeld dit gerust in het formulier — we bespreken de mogelijkheden, formaten en prijzen graag persoonlijk via e-mail.</p>
 </section>
 
 <section class="sectie" style="padding-top:0;">
   <div class="contact-grid">
-    <div class="contact-blok">
-      <h3>E-mail</h3>
-      <p><a href="mailto:info@wilderenstil.be">info@wilderenstil.be</a></p>
-    </div>
-    <div class="contact-blok">
-      <h3>Telefoon</h3>
-      <p><a href="tel:+32470000000">+32 470 00 00 00</a></p>
-    </div>
-    <div class="contact-blok">
-      <h3>Sociale media</h3>
-      <p><a href="#">Instagram</a> · <a href="#">Facebook</a></p>
-    </div>
-  </div>
-</section>
 
-<!-- ============================================================ CONTACTFORMULIER -->
-<section class="sectie" style="padding-top:0;">
-  <div class="sectie-smal" style="max-width:900px;">
-    <h2>Stuur ons een bericht</h2>
-    <p style="color:var(--c-tekst-zacht);">Of het nu gaat om een algemene vraag, een opdracht op maat of de bestelling van een afdruk: vul het formulier in en we nemen persoonlijk contact met u op.</p>
+    <!-- Links: uitleg + contactgegevens. Op mobiel staat dit door de
+         volgorde in de HTML automatisch bovenaan, vóór het formulier. -->
+    <div class="contact-info">
+      <p>Stuur een mailtje met uw vraag of boodschap. Interesse in een afdruk van een foto? Vermeld dit gerust in het formulier — we bespreken de mogelijkheden, formaten en prijzen graag persoonlijk via e-mail.</p>
 
-    <!-- Dit formulier gebruikt een mailto-koppeling zodat het meteen werkt
-         op GitHub Pages, zonder server nodig. Wilt u de berichten liever
-         rechtstreeks in een online formulier ontvangen (bv. via Formspree
-         of Netlify Forms), vervang dan de action + method hieronder door
-         de instructies van die dienst. -->
-    <form id="contactformulier" class="form-grid">
-      <div class="veld">
-        <label for="naam">Naam</label>
-        <input type="text" id="naam" name="naam" placeholder="Uw naam" required>
+      <div class="contact-blok">
+        <h3>E-mail</h3>
+        <p><a href="mailto:info@wilderenstil.be">info@wilderenstil.be</a></p>
       </div>
-      <div class="veld">
-        <label for="email">E-mailadres</label>
-        <input type="email" id="email" name="email" placeholder="uw@email.com" required>
+      <div class="contact-blok">
+        <h3>Telefoon</h3>
+        <p><a href="tel:+32470000000">+32 470 00 00 00</a></p>
       </div>
-      <div class="veld volledig">
-        <label for="telefoon">Telefoonnummer (optioneel)</label>
-        <input type="tel" id="telefoon" name="telefoon" placeholder="bv. +32 0 00 00 00 00">
+      <div class="contact-blok">
+        <h3>Sociale media</h3>
+        <p><a href="#">Instagram</a> · <a href="#">Facebook</a></p>
       </div>
-      <div class="veld volledig">
-        <label for="bericht">Bericht</label>
-        <textarea id="bericht" name="bericht" placeholder="Bv. uw vraag, of de foto die u graag als afdruk zou bestellen en het gewenste formaat." required></textarea>
-      </div>
-      <div class="volledig form-actions">
-        <button type="submit" class="btn btn-goud">Bericht versturen</button>
-        <span class="form-note">We reageren zo snel mogelijk per e-mail.</span>
-      </div>
-    </form>
-    <p class="form-succes" id="formSucces">Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.</p>
+    </div>
+
+    <!-- Rechts: het contactformulier -->
+    <div>
+      <h2>Stuur ons een bericht</h2>
+      <p style="color:var(--c-tekst-zacht);">Of het nu gaat om een algemene vraag, een opdracht op maat of de bestelling van een afdruk: vul het formulier in en we nemen persoonlijk contact met u op.</p>
+
+      <!-- Dit formulier gebruikt een mailto-koppeling zodat het meteen werkt
+           op GitHub Pages, zonder server nodig. Wilt u de berichten liever
+           rechtstreeks in een online formulier ontvangen (bv. via Formspree
+           of Netlify Forms), vervang dan de action + method hieronder door
+           de instructies van die dienst. -->
+      <form id="contactformulier" class="form-grid">
+        <div class="veld volledig">
+          <label for="naam">Naam</label>
+          <input type="text" id="naam" name="naam" placeholder="Uw naam" required>
+        </div>
+        <div class="veld volledig">
+          <label for="email">E-mailadres</label>
+          <input type="email" id="email" name="email" placeholder="uw@email.com" required>
+        </div>
+        <div class="veld volledig">
+          <label for="telefoon">Telefoonnummer (optioneel)</label>
+          <input type="tel" id="telefoon" name="telefoon" placeholder="bv. +32 0 00 00 00 00">
+        </div>
+        <div class="veld volledig">
+          <label for="bericht">Bericht</label>
+          <textarea id="bericht" name="bericht" placeholder="Bv. uw vraag, of de foto die u graag als afdruk zou bestellen en het gewenste formaat." required></textarea>
+        </div>
+        <div class="volledig form-actions">
+          <button type="submit" class="btn btn-goud">Bericht versturen</button>
+          <span class="form-note">We reageren zo snel mogelijk per e-mail.</span>
+        </div>
+      </form>
+      <p class="form-succes" id="formSucces">Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.</p>
+    </div>
+
   </div>
 </section>
 
