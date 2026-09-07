@@ -461,7 +461,7 @@ h1,h2,h3,h4{
    buitenkant, gecentreerd op de pagina. */
 .cat-grid{
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 28px;
   max-width: var(--maxw);
   margin: 0 auto;
@@ -469,7 +469,7 @@ h1,h2,h3,h4{
 }
 .cat-card{
   position:relative;
-  aspect-ratio: 3/4;
+  aspect-ratio: 4/3;
   overflow:hidden;
   border-radius: 16px;
   background: var(--c-noir);
@@ -490,21 +490,9 @@ h1,h2,h3,h4{
 }
 .cat-card .label .eyebrow{ display:block; margin-bottom:.3rem; }
 .cat-card .label h3{ font-size: 1.5rem; margin:0; }
-.cat-card--alle{
-  grid-column: span 2;
-  /* Geen eigen 3:4-verhouding: op dubbele breedte zou dat de kaart veel
-     te hoog maken. Door aspect-ratio hier los te laten, rekt de kaart
-     (align-items:stretch, de grid-standaard) automatisch uit tot exact
-     dezelfde hoogte als de rest van die rij. */
-  aspect-ratio: auto;
-}
 @media (max-width: 860px){
-  .cat-grid{ grid-template-columns: 1fr 1fr; gap: 20px; }
-  /* Enkel op desktop: op mobiel/tablet blijft "Alle foto's" bereikbaar
-     via de knop "Ontdek alle foto's" onder de grid. */
-  .cat-card--alle{ display:none; }
+  .cat-grid{ grid-template-columns: 1fr; gap: 20px; }
 }
-@media (max-width: 560px){ .cat-grid{ grid-template-columns: 1fr; gap: 20px; } }
 
 /* ============================================================== FOTOGRID
    Twee kolommen op desktop, elke foto in haar eigen, natuurlijke
