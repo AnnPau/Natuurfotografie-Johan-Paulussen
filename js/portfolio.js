@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ============================================================ */
   const catGrid = document.querySelector("[data-cat-grid]");
   if (catGrid){
-    const categorieKaarten = CATEGORIEEN.map(cat => `
+    catGrid.innerHTML = CATEGORIEEN.map(cat => `
       <a class="cat-card" href="../categorie/?cat=${cat.slug}">
         <img src="${cat.cover}" alt="${cat.naam}" loading="lazy">
         <div class="label">
@@ -28,22 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </a>
     `).join("");
-
-    // "Alle foto's" als extra kaart, twee keer zo breed als een gewone
-    // categorie — zo wordt de derde rij (7 categorieën in 3 kolommen
-    // laat er telkens 1 over) mooi aangevuld tot dezelfde breedte als
-    // de andere rijen. Enkel zichtbaar op desktop, zie style.css.
-    const alleFotosKaart = `
-      <a class="cat-card cat-card--alle" href="../categorie/?cat=${ALLE_FOTOS_SLUG}">
-        <img src="${coverFotoVoorCategorie(ALLE_FOTOS_SLUG)}" alt="Alle foto's" loading="lazy">
-        <div class="label">
-          <span class="eyebrow">${FOTOS.length} foto's</span>
-          <h3>Alle foto's</h3>
-        </div>
-      </a>
-    `;
-
-    catGrid.innerHTML = categorieKaarten + alleFotosKaart;
   }
 
   /* ============================================================
