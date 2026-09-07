@@ -240,6 +240,12 @@ h1,h2,h3,h4{
     position: relative;
     z-index: 101; /* boven het paneel, zodat de knop bruikbaar blijft om te sluiten */
   }
+  /* Zodra het paneel open staat, zit de knop altijd tegen de lichte
+     achtergrond van .nav-links — ook op de homepage, vóór je scrolt,
+     wanneer de navbalk zelf nog transparant met witte tekst is (dan
+     zou een wit kruisje onzichtbaar zijn op dat lichte paneel). Forceer
+     daarom een donkere kleur zodra het menu open staat. */
+  body.nav-open .nav-toggle{ color: var(--c-inkt); }
   .nav-links{
     position: fixed;
     top: 0; right: 0;
