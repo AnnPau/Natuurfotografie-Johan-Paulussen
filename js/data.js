@@ -169,7 +169,7 @@ const FOTOS = [
     breedte: 1800,
     hoogte: 1200,
     beschrijving: "Typ hier je tekst...",
-  },
+  }
 
 
 ];
