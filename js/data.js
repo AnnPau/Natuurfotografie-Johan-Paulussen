@@ -40,7 +40,7 @@ const CATEGORIEEN = [
   {
     slug: "afrika",
     naam: "Afrika",
-    cover: "../images/cover_afrika.jpg"
+    cover: "../images/cover_afrika.webp"
   },
   {
     slug: "noord-amerika",
@@ -55,7 +55,7 @@ const CATEGORIEEN = [
   {
     slug: "zuid-amerika",
     naam: "Zuid-Amerika",
-    cover: "../images/cover_zuid-amerika.jpg"
+    cover: "../images/cover_zuid-amerika.webp"
   },
   {
     slug: "azie",
