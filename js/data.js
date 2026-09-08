@@ -40,32 +40,32 @@ const CATEGORIEEN = [
   {
     slug: "afrika",
     naam: "Afrika",
-    cover: "../images/cover-afrika.jpg"
+    cover: "../images/cover_afrika.jpg"
   },
   {
-    slug: "noordamerika",
+    slug: "noord-amerika",
     naam: "Noord-Amerika",
-    cover: "../images/cover-noordamerika.jpg"
+    cover: "../images/cover_noord-amerika.jpg"
   },
   {
-    slug: "middenamerika",
+    slug: "midden-amerika",
     naam: "Midden-Amerika",
-    cover: "../images/cover-middenamerika.jpg"
+    cover: "../images/cover_midden-amerika.jpg"
   },
   {
-    slug: "zuidamerika",
+    slug: "zuid-amerika",
     naam: "Zuid-Amerika",
-    cover: "../images/cover-zuidamerika.jpg"
+    cover: "../images/cover_zuid-amerika.jpg"
   },
   {
     slug: "azie",
     naam: "Azië",
-    cover: "../images/cover-azie.jpg"
+    cover: "../images/cover_azie.jpg"
   },
   {
     slug: "antarctica",
     naam: "Antarctica & Subantarctische eilanden",
-    cover: "../images/cover-antarctica.jpg"
+    cover: "../images/cover_antarctica.jpg"
   }
 ];
 
