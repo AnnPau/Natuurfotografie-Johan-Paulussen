@@ -35,7 +35,7 @@ const CATEGORIEEN = [
   {
     slug: "europa",
     naam: "Europa",
-    cover: "../images/cover-europa.jpg"
+    cover: "../images/cover_europa.jpg"
   },
   {
     slug: "afrika",
