@@ -94,8 +94,8 @@ const FOTOS = [
     id: "bat_eared_fox",
     titel: "Bat eared fox",
     afbeelding: "../images/portfolio/afrika/bat_eared_fox.webp",
-    breedte: 1600,
-    hoogte: 1067,
+    breedte: 1800,
+    hoogte: 1200,
     beschrijving: "Typ hier je tekst...",
   },
   // ===== nieuwe foto's hieronder toevoegen (komma tussen elk object!) =====
