@@ -169,8 +169,39 @@ const FOTOS = [
     breedte: 1800,
     hoogte: 1200,
     beschrijving: "Typ hier je tekst...",
+  },
+  {
+    id: "jaguar1",
+    titel: "Jaguar 1",
+    afbeelding: "../images/portfolio/zuid-amerika/jaguar1.webp",
+    breedte: 1800,
+    hoogte: 1200,
+    beschrijving: "Typ hier je tekst...",
+  },
+  {
+    id: "jaguar2",
+    titel: "Jaguar 2",
+    afbeelding: "../images/portfolio/zuid-amerika/jaguar2.webp",
+    breedte: 1800,
+    hoogte: 1200,
+    beschrijving: "Typ hier je tekst...",
+  },
+  {
+    id: "puma",
+    titel: "Puma",
+    afbeelding: "../images/portfolio/zuid-amerika/puma.webp",
+    breedte: 1800,
+    hoogte: 1200,
+    beschrijving: "Typ hier je tekst...",
+  },
+  {
+    id: "reuzenotter",
+    titel: "Reuzenotter",
+    afbeelding: "../images/portfolio/zuid-amerika/reuzenotter.webp",
+    breedte: 1800,
+    hoogte: 1200,
+    beschrijving: "Typ hier je tekst...",
   }
-
 
 ];
 
