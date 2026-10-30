@@ -203,7 +203,7 @@ const FOTOS = [
 ];
 
 /* --------------------------------------------------------------------
-   Hulpfuncties — gebruikt door portfolio.js, hoeft u niet aan te passen
+   Hulpfuncties — gebruikt door portfolio.js, niet aan te passen!
    -------------------------------------------------------------------- */
 
 // Virtuele categorie "alle foto's" — geen echte categorie uit de lijst
