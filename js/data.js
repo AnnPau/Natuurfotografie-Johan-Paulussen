@@ -89,12 +89,11 @@ const CATEGORIEEN = [
    -------------------------------------------------------------------- */
 const FOTOS = [
 
-  // ===== VOORBEELD — kopieer dit blok om een nieuwe foto toe te voegen =====
   {
     id: "bat_eared_fox",
     titel: "Bat eared fox",
     afbeelding: "../images/portfolio/afrika/bat_eared_fox.webp",
-    breedte: 1800,
+    breedte: 1200,
     hoogte: 1200,
     beschrijving: "Typ hier je tekst...",
   },
