@@ -16,14 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
      ============================================================ */
   const catGrid = document.querySelector("[data-cat-grid]");
   if (catGrid){
+    // De volledige categoriekaart is opnieuw één link, zodat de bezoeker
+    // overal op de kaart kan klikken (niet alleen op de categorienaam).
     catGrid.innerHTML = CATEGORIEEN.map(cat => `
-      <article class="cat-card foto-beschermd">
+      <a class="cat-card foto-beschermd" href="../categorie/?cat=${cat.slug}" aria-label="Bekijk categorie ${cat.naam}">
         <img class="foto-beschermd" src="${cat.cover}" alt="${cat.naam}" loading="lazy" draggable="false">
         <div class="label">
           <span class="eyebrow">${fotosVanCategorie(cat.slug).length} foto's</span>
-          <h3><a href="../categorie/?cat=${cat.slug}">${cat.naam}</a></h3>
+          <h3>${cat.naam}</h3>
         </div>
-      </article>
+      </a>
     `).join("");
   }
 
@@ -44,15 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
         ? ` width="${f.breedte}" height="${f.hoogte}"`
         : "";
       const beschermd = f.dier === true;
-      const kaartTag = beschermd ? "div" : "a";
-      const kaartAttributen = beschermd
-        ? 'class="photo-card foto-beschermd"'
-        : `class="photo-card" href="../foto/?id=${f.id}"`;
+      // Ook beschermde dierenfoto's blijven gewone links naar hun detailpagina.
+      // De bescherming blokkeert rechtsklikken en slepen, niet het aanklikken.
+      const kaartKlasse = beschermd ? "photo-card foto-beschermd" : "photo-card";
+      const afbeeldingKlasse = beschermd ? 'class="foto-beschermd"' : "";
       return `
-        <${kaartTag} ${kaartAttributen} data-foto-id="${f.id}" data-row-index="${Math.floor(index / 2)}">
-          <img ${beschermd ? 'class="foto-beschermd"' : ""} data-src="${f.afbeelding}" alt="${f.titel}"${afmetingen} loading="eager" decoding="async" draggable="false">
+        <a class="${kaartKlasse}" href="../foto/?id=${f.id}" data-foto-id="${f.id}" data-row-index="${Math.floor(index / 2)}" aria-label="Bekijk ${f.titel}">
+          <img ${afbeeldingKlasse} data-src="${f.afbeelding}" alt="${f.titel}"${afmetingen} loading="eager" decoding="async" draggable="false">
           <div class="titel-strip">${f.titel}</div>
-        </${kaartTag}>
+        </a>
       `;
     };
 

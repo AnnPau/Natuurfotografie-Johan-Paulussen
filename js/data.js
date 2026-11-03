@@ -84,7 +84,7 @@ const CATEGORIEEN = [
                   deze verhouding om vooraf ruimte te reserveren voor de
                   foto, zodat de pagina minder verspringt tijdens het laden.
                   De CSS bepaalt hoe groot de foto op het scherm wordt.
-   dier         : true voor dierenfoto's (niet klikbaar/versleepbaar)
+   dier         : true voor dierenfoto's (rechtsklik en slepen geblokkeerd; de foto blijft klikbaar)
    beschrijving : kort tekstblokje op de fotodetailpagina
    -------------------------------------------------------------------- */
 const FOTOS = [
