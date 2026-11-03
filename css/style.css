@@ -496,6 +496,8 @@ h1,h2,h3,h4{
 }
 .cat-card .label .eyebrow{ display:block; margin-bottom:.3rem; }
 .cat-card .label h3{ font-size: 1.5rem; margin:0; }
+.cat-card .label h3 a{ display:inline-block; }
+.cat-card .foto-beschermd{ pointer-events:none; }
 @media (max-width: 860px){
   .cat-grid{ grid-template-columns: 1fr; gap: 20px; }
 }
@@ -506,13 +508,18 @@ h1,h2,h3,h4{
    de bovenste rij foto's altijd netjes op dezelfde hoogte begint,
    met een vaste tussenmarge tussen alle rijen en kolommen. */
 .photo-grid{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: start;
-  gap: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   max-width: 1560px;
   margin: 0 auto;
   padding: 64px var(--pad) 90px;
+}
+.photo-row{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items:start;
+  gap: 40px 36px;
 }
 .photo-card{
   position:relative;
@@ -538,6 +545,14 @@ h1,h2,h3,h4{
 }
 .photo-card img{ width:100%; height:auto; display:block; transition: transform 1s var(--ease); }
 .photo-card:hover img{ transform: scale(1.05); }
+.photo-card.foto-beschermd{ cursor:default; }
+.foto-beschermd img, img.foto-beschermd{
+  -webkit-user-drag:none;
+  user-select:none;
+  -webkit-user-select:none;
+  pointer-events:none;
+}
+.foto-beschermd{ user-select:none; -webkit-user-select:none; }
 .photo-card .titel-strip{
   position:absolute; left:0; right:0; bottom:0;
   padding: 26px 30px;
@@ -549,15 +564,17 @@ h1,h2,h3,h4{
   opacity: .96;
 }
 @media (max-width: 860px){
-  .photo-grid{ grid-template-columns: 1fr; gap: 24px; padding: 32px var(--pad) 70px; }
+  .photo-grid{ gap: 24px; padding: 32px var(--pad) 70px; }
+  .photo-row{ grid-template-columns: 1fr; gap: 24px; }
   .photo-card .titel-strip{ font-size: 1.05rem; padding: 18px 20px; }
 }
 @media (prefers-reduced-motion: reduce){
   .photo-grid.has-reveal .photo-card{
-    opacity: 1;
     transform: none;
     transition: none;
   }
+  .photo-grid.has-reveal .photo-card:not(.is-visible){ opacity:0; }
+  .photo-grid.has-reveal .photo-card.is-visible{ opacity:1; }
 }
 
 /* ============================================================== FOTODETAIL */
