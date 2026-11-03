@@ -504,22 +504,16 @@ h1,h2,h3,h4{
 
 /* ============================================================== FOTOGRID
    Twee kolommen op desktop, elke foto in haar eigen, natuurlijke
-   formaat (geen uitsnede). Een echte grid (i.p.v. CSS-columns) zodat
-   de bovenste rij foto's altijd netjes op dezelfde hoogte begint,
-   met een vaste tussenmarge tussen alle rijen en kolommen. */
+   formaat (geen uitsnede). De oorspronkelijke gridopmaak blijft behouden.
+   */
 .photo-grid{
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: start;
+  gap: 40px 36px;
   max-width: 1560px;
   margin: 0 auto;
   padding: 64px var(--pad) 90px;
-}
-.photo-row{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items:start;
-  gap: 40px 36px;
 }
 .photo-card{
   position:relative;
@@ -564,17 +558,15 @@ h1,h2,h3,h4{
   opacity: .96;
 }
 @media (max-width: 860px){
-  .photo-grid{ gap: 24px; padding: 32px var(--pad) 70px; }
-  .photo-row{ grid-template-columns: 1fr; gap: 24px; }
+  .photo-grid{ grid-template-columns: 1fr; gap: 24px; padding: 32px var(--pad) 70px; }
   .photo-card .titel-strip{ font-size: 1.05rem; padding: 18px 20px; }
 }
 @media (prefers-reduced-motion: reduce){
   .photo-grid.has-reveal .photo-card{
+    opacity: 1;
     transform: none;
     transition: none;
   }
-  .photo-grid.has-reveal .photo-card:not(.is-visible){ opacity:0; }
-  .photo-grid.has-reveal .photo-card.is-visible{ opacity:1; }
 }
 
 /* ============================================================== FOTODETAIL */
