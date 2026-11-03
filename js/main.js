@@ -9,6 +9,21 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+
+  /* ---------------- foto's beschermen tegen eenvoudig kopiëren ----------------
+     Dit voorkomt het gebruikelijke rechtsklikmenu, slepen en selecteren.
+     Het is een drempel tegen onbedoeld kopiëren, geen waterdichte beveiliging:
+     bestanden blijven technisch bereikbaar via de browser en ontwikkelaarstools. */
+  document.addEventListener("contextmenu", event => {
+    if (event.target instanceof Element && event.target.closest(".foto-beschermd")) event.preventDefault();
+  });
+  document.addEventListener("dragstart", event => {
+    if (event.target instanceof Element && event.target.closest(".foto-beschermd")) event.preventDefault();
+  });
+  document.addEventListener("selectstart", event => {
+    if (event.target instanceof Element && event.target.closest(".foto-beschermd")) event.preventDefault();
+  });
+
   /* ---------------- navigatiebalk kleurt bij scrollen -----------------
      Alleen op pagina's mét een fullscreen hero (nu enkel de homepage)
      start de balk transparant en wordt ze pas effen bij scrollen. Op

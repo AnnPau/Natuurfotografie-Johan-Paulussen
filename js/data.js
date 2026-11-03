@@ -13,7 +13,8 @@
       hieraan automatisch herkend, je hoeft dit dus nergens apart in te
       vullen.
    2. Kopieer hieronder één object uit FOTOS als voorbeeld, plak het in
-      de lijst en pas id, titel, afbeelding en beschrijving aan.
+      de lijst en pas id, titel, afbeelding en beschrijving aan. Voeg
+      'dier: true' toe bij dierenfoto's.
    3. De VOLGORDE waarin de foto's hieronder staan bepaalt ook de
       volgorde waarin ze getoond worden — zowel op de pagina "Alle
       foto's" als binnen elke categoriepagina. Wil je een foto vooraan
@@ -83,12 +84,14 @@ const CATEGORIEEN = [
                   deze verhouding om vooraf ruimte te reserveren voor de
                   foto, zodat de pagina minder verspringt tijdens het laden.
                   De CSS bepaalt hoe groot de foto op het scherm wordt.
+   dier         : true voor dierenfoto's (niet klikbaar/versleepbaar)
    beschrijving : kort tekstblokje op de fotodetailpagina
    -------------------------------------------------------------------- */
 const FOTOS = [
 
   {
     id: "bat_eared_fox",
+    dier: true,
     titel: "Bat eared fox",
     afbeelding: "../images/portfolio/afrika/bat_eared_fox.webp",
     breedte: 1800,
@@ -97,6 +100,7 @@ const FOTOS = [
   },
   {
     id: "buffel1",
+    dier: true,
     titel: "Buffel 1",
     afbeelding: "../images/portfolio/afrika/buffel1.webp",
     breedte: 1800,
@@ -105,6 +109,7 @@ const FOTOS = [
   },
   {
     id: "buffel2",
+    dier: true,
     titel: "Buffel 2",
     afbeelding: "../images/portfolio/afrika/buffel2.webp",
     breedte: 1800,
@@ -113,6 +118,7 @@ const FOTOS = [
   },
   {
     id: "gnoemigration",
+    dier: true,
     titel: "Gnoe migration",
     afbeelding: "../images/portfolio/afrika/gnoemigration.webp",
     breedte: 1800,
@@ -121,6 +127,7 @@ const FOTOS = [
   },
   {
     id: "meerkat",
+    dier: true,
     titel: "Meerkat",
     afbeelding: "../images/portfolio/afrika/meerkat.webp",
     breedte: 1800,
@@ -129,6 +136,7 @@ const FOTOS = [
   },
   {
     id: "zebra",
+    dier: true,
     titel: "Zebra",
     afbeelding: "../images/portfolio/afrika/zebra.webp",
     breedte: 1800,
@@ -137,6 +145,7 @@ const FOTOS = [
   },
   {
     id: "capibara",
+    dier: true,
     titel: "Capibara",
     afbeelding: "../images/portfolio/zuid-amerika/capibara.webp",
     breedte: 1800,
@@ -145,6 +154,7 @@ const FOTOS = [
   },
   {
     id: "culpeo",
+    dier: true,
     titel: "Culpeo",
     afbeelding: "../images/portfolio/zuid-amerika/culpeo.webp",
     breedte: 1800,
@@ -153,6 +163,7 @@ const FOTOS = [
   },
   {
     id: "emperor_tamarin",
+    dier: true,
     titel: "Emperor tamarin",
     afbeelding: "../images/portfolio/zuid-amerika/emperor_tamarin.webp",
     breedte: 1800,
@@ -161,6 +172,7 @@ const FOTOS = [
   },
   {
     id: "guanaco",
+    dier: true,
     titel: "Guanaco",
     afbeelding: "../images/portfolio/zuid-amerika/guanaco.webp",
     breedte: 1800,
@@ -169,6 +181,7 @@ const FOTOS = [
   },
   {
     id: "jaguar1",
+    dier: true,
     titel: "Jaguar 1",
     afbeelding: "../images/portfolio/zuid-amerika/jaguar1.webp",
     breedte: 1800,
@@ -177,6 +190,7 @@ const FOTOS = [
   },
   {
     id: "jaguar2",
+    dier: true,
     titel: "Jaguar 2",
     afbeelding: "../images/portfolio/zuid-amerika/jaguar2.webp",
     breedte: 1800,
@@ -185,6 +199,7 @@ const FOTOS = [
   },
   {
     id: "puma",
+    dier: true,
     titel: "Puma",
     afbeelding: "../images/portfolio/zuid-amerika/puma.webp",
     breedte: 1800,
@@ -193,6 +208,7 @@ const FOTOS = [
   },
   {
     id: "reuzenotter",
+    dier: true,
     titel: "Reuzenotter",
     afbeelding: "../images/portfolio/zuid-amerika/reuzenotter.webp",
     breedte: 1800,
