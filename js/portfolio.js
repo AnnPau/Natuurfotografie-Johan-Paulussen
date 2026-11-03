@@ -49,30 +49,28 @@ document.addEventListener("DOMContentLoaded", () => {
         ? 'class="photo-card foto-beschermd"'
         : `class="photo-card" href="../foto/?id=${f.id}"`;
       return `
-        <${kaartTag} ${kaartAttributen} data-foto-id="${f.id}">
+        <${kaartTag} ${kaartAttributen} data-foto-id="${f.id}" data-row-index="${Math.floor(index / 2)}">
           <img ${beschermd ? 'class="foto-beschermd"' : ""} data-src="${f.afbeelding}" alt="${f.titel}"${afmetingen} loading="eager" decoding="async" draggable="false">
           <div class="titel-strip">${f.titel}</div>
         </${kaartTag}>
       `;
     };
 
-    // Elke visuele rij bevat links en rechts één foto. Beide foto's starten
-    // samen en verschijnen samen; daarna komt pas de volgende rij aan de beurt.
-    const rijen = [];
-    for (let i = 0; i < fotos.length; i += 2){
-      rijen.push(fotos.slice(i, i + 2));
-    }
-    fotoGrid.innerHTML = rijen.map((rij, rijIndex) => `
-      <div class="photo-row" data-photo-row data-row-index="${rijIndex}">
-        ${rij.map((foto, fotoIndex) => kaartHtml(foto, rijIndex * 2 + fotoIndex)).join("")}
-      </div>
-    `).join("");
+    // De kaarten blijven rechtstreeks in de oorspronkelijke CSS-grid staan:
+    // twee kolommen op desktop, zonder extra rij-elementen die de opmaak wijzigen.
+    fotoGrid.innerHTML = fotos.map((foto, index) => kaartHtml(foto, index)).join("");
 
-    const fotoRijen = Array.from(fotoGrid.querySelectorAll("[data-photo-row]"));
+    const kaarten = Array.from(fotoGrid.querySelectorAll(".photo-card"));
+    const rijen = [];
+    for (let i = 0; i < kaarten.length; i += 2){
+      rijen.push({ index: Math.floor(i / 2), kaarten: kaarten.slice(i, i + 2) });
+    }
+
     let rijActief = false;
     const wachtrij = [];
+    const ingeplandeRijen = new Set();
 
-    // Laad de afbeeldingen van één rij parallel en wacht ook op decode().
+    // Laad beide afbeeldingen van een rij parallel en wacht op decode().
     function laadAfbeelding(afbeelding){
       if (afbeelding.dataset.loaded === "true") return Promise.resolve();
       const bron = afbeelding.dataset.src;
@@ -103,17 +101,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function laadRij(rij){
-      const kaarten = Array.from(rij.querySelectorAll(".photo-card"));
-      const afbeeldingen = kaarten.map(kaart => kaart.querySelector("img")).filter(Boolean);
+      const afbeeldingen = rij.kaarten
+        .map(kaart => kaart.querySelector("img"))
+        .filter(Boolean);
       afbeeldingen.forEach(afbeelding => {
-        afbeelding.fetchPriority = rij.dataset.rowIndex === "0" ? "high" : "low";
+        afbeelding.fetchPriority = rij.index === 0 ? "high" : "low";
       });
 
-      // Promise.all zorgt ervoor dat links én rechts pas zichtbaar worden
-      // wanneer beide foto's geladen en decodeerbaar zijn.
+      // De twee foto's starten samen en worden pas samen zichtbaar als beide klaar zijn.
       await Promise.all(afbeeldingen.map(laadAfbeelding));
       requestAnimationFrame(() => {
-        kaarten.forEach(kaart => kaart.classList.add("is-visible"));
+        rij.kaarten.forEach(kaart => kaart.classList.add("is-visible"));
       });
     }
 
@@ -131,10 +129,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const observer = new IntersectionObserver((entries, currentObserver) => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
-          currentObserver.unobserve(entry.target);
-          if (!wachtrij.includes(entry.target)){
-            wachtrij.push(entry.target);
-            wachtrij.sort((a, b) => Number(a.dataset.rowIndex) - Number(b.dataset.rowIndex));
+          const kaart = entry.target;
+          currentObserver.unobserve(kaart);
+          const rijIndex = Number(kaart.dataset.rowIndex);
+          if (ingeplandeRijen.has(rijIndex)) return;
+
+          ingeplandeRijen.add(rijIndex);
+          const rij = rijen[rijIndex];
+          if (rij){
+            wachtrij.push(rij);
+            wachtrij.sort((a, b) => a.index - b.index);
           }
         });
         verwerkWachtrij();
@@ -143,11 +147,15 @@ document.addEventListener("DOMContentLoaded", () => {
         threshold: 0.01
       });
 
-      fotoRijen.forEach(rij => observer.observe(rij));
+      // Eén kaart per rij observeren volstaat: de tweede staat op dezelfde gridrij.
+      rijen.forEach(rij => {
+        const eersteKaart = rij.kaarten[0];
+        if (eersteKaart) observer.observe(eersteKaart);
+      });
     } else {
-      // Fallback voor oudere browsers: laad de rijen nog steeds op volgorde.
+      // Fallback voor oudere browsers: laad de fotoparen nog steeds samen.
       (async () => {
-        for (const rij of fotoRijen) await laadRij(rij);
+        for (const rij of rijen) await laadRij(rij);
       })();
     }
   }
