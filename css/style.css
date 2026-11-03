@@ -539,7 +539,7 @@ h1,h2,h3,h4{
 }
 .photo-card img{ width:100%; height:auto; display:block; transition: transform 1s var(--ease); }
 .photo-card:hover img{ transform: scale(1.05); }
-.photo-card.foto-beschermd{ cursor:default; }
+.photo-card.foto-beschermd{ cursor:pointer; }
 .foto-beschermd img, img.foto-beschermd{
   -webkit-user-drag:none;
   user-select:none;
