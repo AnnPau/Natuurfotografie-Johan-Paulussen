@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natuurfotografie Johan Paulussen</title>
+<meta name="description" content="Natuurfotografie by Johan Paulussen">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/slide-1.webp" fetchpriority="high">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============================================================ NAVIGATIE -->
+<header class="site-nav">
+  <a href="./" class="logo">
+    <img class="logo-voor-zwart" src="images/logo-voor-zwart.png" alt="CJP Natuurfotografie">
+    <img class="logo-voor-wit" src="images/logo-voor-wit.png" alt="CJP Natuurfotografie">
+  </a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  <nav>
+    <ul class="nav-links">
+      <li><a class="top-link" href="./">Home</a></li>
+      <li class="has-menu">
+        <a class="top-link" href="portfolio/">Portfolio</a>
+        <div class="mega-menu" data-mega-menu></div>
+      </li>
+      <li><a class="top-link" href="over-mij/">Over mij</a></li>
+      <li><a class="top-link" href="contact/">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ============================================================ HERO SLIDESHOW -->
+<section class="hero">
+  <div class="hero-slide is-active" data-bg="images/slide-1.webp"></div>
+  <div class="hero-slide" data-bg="images/slide-2.webp"></div>
+  <div class="hero-slide" data-bg="images/slide-3.webp"></div>
+  <div class="hero-slide" data-bg="images/slide-4.webp"></div>
+
+  <div class="hero-inner">
+    <h1 class="hero-title">Natuurfotografie</h1>
+    <p class="hero-sub">Dieren, landschappen en meer vastgelegd op plekken waar de natuur het hoogste woord heeft. Bekijk het portfolio en ontdek de foto's.</p>
+    <div class="hero-actions">
+      <a class="btn btn-goud" href="portfolio/">Bekijk portfolio</a>
+    </div>
+  </div>
+
+  <div class="hero-dots"></div>
+</section>
+
+<!-- ============================================================ SCROLL-REVEAL BARS -->
+<section class="bars">
+
+  <div class="bar">
+    <div class="bar-media foto-beschermd"><img class="foto-beschermd" src="images/index-1.jpg" alt="Spetters" loading="lazy" draggable="false"></div>
+    <div class="bar-content">
+      <div class="horizon"></div>
+      <div class="opacity-group">
+        <h3>Portfolio</h3>
+        <p>Meer dan 50 foto's te ontdekken. Klik door naar een categorie of blader door alle foto's.</p>
+        <a class="btn btn-line" href="portfolio/">Naar het portfolio</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <div class="bar-media foto-beschermd"><img class="foto-beschermd" src="images/index-2.jpg" alt="Oog in oogr" loading="lazy" draggable="false"></div>
+    <div class="bar-content">
+      <div class="horizon"></div>
+      <div class="opacity-group">
+        <h3>Over mij</h3>
+        <p>Een woordje uitleg over mezelf.</p>
+        <a class="btn btn-line" href="over-mij/">Lees mijn verhaal</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <div class="bar-media foto-beschermd"><img class="foto-beschermd" src="images/index-3.jpg" alt="Moeder en zoon in het dierenrijk" loading="lazy" draggable="false"></div>
+    <div class="bar-content">
+      <div class="horizon"></div>
+      <div class="opacity-group">
+        <h3>Contact</h3>
+        <p>Heeft u nog vragen? Aarzel dan niet om contact op te nemen.</p>
+        <a class="btn btn-line" href="contact/">Neem contact op</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================ FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="./" class="logo"><img src="images/logo-voor-zwart.png" alt="CJP Natuurfotografie"></a>
+    <div class="footer-links">
+      <div>
+        <h4>Verkennen</h4>
+        <ul>
+          <li><a href="portfolio/">Portfolio</a></li>
+          <li><a href="over-mij/">Over mij</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact/">Contactpagina</a></li>
+          <li><a href="mailto:fam.paulussen@telenet.be">fam.paulussen@telenet.be</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© Natuurfotografie Johan Paulussen</span>
+    <span>Alle foto's zijn eigendom van de fotograaf en mogen niet zonder toestemming gebruikt worden.</span>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
